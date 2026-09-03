@@ -1,0 +1,88 @@
+import type { InsightTip } from '../types';
+
+export const ovulatoryTips: InsightTip[] = [
+  {
+    id: 'ovulatory-physical-01',
+    phase: 'ovulatory',
+    category: 'physical',
+    text: 'Energy and strength often peak around now, a good window for a challenging workout.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-physical-02',
+    phase: 'ovulatory',
+    category: 'physical',
+    text: 'Some people notice more flexibility or coordination this week. Still worth warming up.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-nutrition-01',
+    phase: 'ovulatory',
+    category: 'nutrition',
+    text: 'Higher energy levels can mean a bit more appetite. Balanced meals help sustain it.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-nutrition-02',
+    phase: 'ovulatory',
+    category: 'nutrition',
+    text: 'Hydration matters more around ovulation for many people, so keep water within reach.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-productivity-01',
+    phase: 'ovulatory',
+    category: 'productivity',
+    text: 'Confidence and communication often peak now, good for big meetings or pitches.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-productivity-02',
+    phase: 'ovulatory',
+    category: 'productivity',
+    text: 'This can be a strong window for negotiating, presenting, or networking.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-mood-01',
+    phase: 'ovulatory',
+    category: 'mood',
+    text: 'Mood and sociability often run high this week for many people.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-mood-02',
+    phase: 'ovulatory',
+    category: 'mood',
+    text: 'A sense of ease with other people is a common pattern around ovulation.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-libido-01',
+    phase: 'ovulatory',
+    category: 'libido',
+    text: 'Desire often peaks around ovulation for many people, though everyone varies.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'ovulatory-libido-02',
+    phase: 'ovulatory',
+    category: 'libido',
+    text: 'Higher confidence and energy this week can carry over into feeling more present with a partner.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'ovulatory-sleep-01',
+    phase: 'ovulatory',
+    category: 'sleep',
+    text: 'A slight body temperature rise around ovulation can affect sleep for some people.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'ovulatory-sleep-02',
+    phase: 'ovulatory',
+    category: 'sleep',
+    text: 'Higher daytime energy can make winding down at night take a bit more intention.',
+    isHeadlineEligible: true,
+  },
+];

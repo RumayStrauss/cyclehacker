@@ -1,0 +1,88 @@
+import type { InsightTip } from '../types';
+
+export const menstrualTips: InsightTip[] = [
+  {
+    id: 'menstrual-physical-01',
+    phase: 'menstrual',
+    category: 'physical',
+    text: 'Energy often runs lower today. Gentle movement or stretching can feel better than a hard workout.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-physical-02',
+    phase: 'menstrual',
+    category: 'physical',
+    text: 'A heating pad or warm bath can ease cramps for many people during the first couple of days.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-nutrition-01',
+    phase: 'menstrual',
+    category: 'nutrition',
+    text: 'Iron-rich foods like leafy greens or lentils can help offset what a period takes out.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-nutrition-02',
+    phase: 'menstrual',
+    category: 'nutrition',
+    text: 'Warm, easy-to-digest meals often sit better than heavy or very cold food right now.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-productivity-01',
+    phase: 'menstrual',
+    category: 'productivity',
+    text: 'This can be a good stretch for reflection, planning, or admin rather than high-output work.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-productivity-02',
+    phase: 'menstrual',
+    category: 'productivity',
+    text: 'If focus feels harder today, shorter work blocks with more breaks can help it go smoother.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-mood-01',
+    phase: 'menstrual',
+    category: 'mood',
+    text: 'Mood can feel quieter or more inward right now. That is a common pattern, not a problem to fix.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-mood-02',
+    phase: 'menstrual',
+    category: 'mood',
+    text: 'A little extra rest and lower expectations for today can go a long way.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-libido-01',
+    phase: 'menstrual',
+    category: 'libido',
+    text: 'Desire often runs lower during a period for many people, though it varies a lot person to person.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'menstrual-libido-02',
+    phase: 'menstrual',
+    category: 'libido',
+    text: 'Some people notice cramps easing with orgasm. Comfort and preference come first either way.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'menstrual-sleep-01',
+    phase: 'menstrual',
+    category: 'sleep',
+    text: 'Sleep can be lighter or more disrupted in the first day or two of a period.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'menstrual-sleep-02',
+    phase: 'menstrual',
+    category: 'sleep',
+    text: 'A slightly earlier wind-down tonight can help make up for lower sleep quality right now.',
+    isHeadlineEligible: true,
+  },
+];

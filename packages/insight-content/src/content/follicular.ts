@@ -1,0 +1,88 @@
+import type { InsightTip } from '../types';
+
+export const follicularTips: InsightTip[] = [
+  {
+    id: 'follicular-physical-01',
+    phase: 'follicular',
+    category: 'physical',
+    text: 'Energy often starts building now, which can be a good window for a harder workout.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-physical-02',
+    phase: 'follicular',
+    category: 'physical',
+    text: 'Strength and endurance can trend upward through this phase for many people.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-nutrition-01',
+    phase: 'follicular',
+    category: 'nutrition',
+    text: 'Appetite is often steadier now, which can make it a good time to try new recipes.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-nutrition-02',
+    phase: 'follicular',
+    category: 'nutrition',
+    text: 'Lighter, fresher meals often feel good as energy picks back up.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-productivity-01',
+    phase: 'follicular',
+    category: 'productivity',
+    text: 'This can be a strong window for starting new projects or tackling harder problems.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-productivity-02',
+    phase: 'follicular',
+    category: 'productivity',
+    text: 'Focus and motivation often trend upward, good for planning ambitious work.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-mood-01',
+    phase: 'follicular',
+    category: 'mood',
+    text: 'Mood often lifts and steadies as this phase goes on for many people.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-mood-02',
+    phase: 'follicular',
+    category: 'mood',
+    text: 'A rising sense of optimism or drive is a common pattern here.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-libido-01',
+    phase: 'follicular',
+    category: 'libido',
+    text: 'Desire often starts rising through the follicular phase for many people.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'follicular-libido-02',
+    phase: 'follicular',
+    category: 'libido',
+    text: 'Confidence and sociability trending up here can carry over into intimacy too.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'follicular-sleep-01',
+    phase: 'follicular',
+    category: 'sleep',
+    text: 'Sleep is often steadier and easier through this phase for many people.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'follicular-sleep-02',
+    phase: 'follicular',
+    category: 'sleep',
+    text: 'Rising energy can make it tempting to stay up later. A consistent bedtime still helps.',
+    isHeadlineEligible: true,
+  },
+];

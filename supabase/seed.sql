@@ -1,0 +1,2 @@
+-- No seed data needed for MVP steps 1-4. Test users and profiles are
+-- created directly by the access-control tests via the Supabase Auth API.

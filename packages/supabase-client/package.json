@@ -1,0 +1,18 @@
+{
+  "name": "@cyclehacker/supabase-client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@cyclehacker/prediction-engine": "workspace:*",
+    "@supabase/supabase-js": "^2.47.10"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,88 @@
+import type { InsightTip } from '../types';
+
+export const lutealTips: InsightTip[] = [
+  {
+    id: 'luteal-physical-01',
+    phase: 'luteal',
+    category: 'physical',
+    text: 'Energy can taper off later in this phase. Lighter movement may feel better than usual.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-physical-02',
+    phase: 'luteal',
+    category: 'physical',
+    text: 'Bloating or tenderness is common late in this phase for many people.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-nutrition-01',
+    phase: 'luteal',
+    category: 'nutrition',
+    text: 'Cravings often pick up here. Pairing them with some protein can help energy stay steadier.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-nutrition-02',
+    phase: 'luteal',
+    category: 'nutrition',
+    text: 'Magnesium-rich foods like nuts or dark chocolate are worth reaching for this week.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-productivity-01',
+    phase: 'luteal',
+    category: 'productivity',
+    text: 'Detail-focused or wrap-up work often suits this phase better than starting something new.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-productivity-02',
+    phase: 'luteal',
+    category: 'productivity',
+    text: 'If motivation dips late in this phase, breaking tasks smaller can help keep momentum.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-mood-01',
+    phase: 'luteal',
+    category: 'mood',
+    text: 'Mood swings are a common pattern in the days before a period for many people.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-mood-02',
+    phase: 'luteal',
+    category: 'mood',
+    text: 'Extra patience with yourself late in this phase can make a real difference.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-libido-01',
+    phase: 'luteal',
+    category: 'libido',
+    text: 'Desire often eases off later in this phase, though it varies a lot from person to person.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'luteal-libido-02',
+    phase: 'luteal',
+    category: 'libido',
+    text: 'Some people notice more sensitivity to touch as PMS symptoms set in.',
+    isHeadlineEligible: false,
+  },
+  {
+    id: 'luteal-sleep-01',
+    phase: 'luteal',
+    category: 'sleep',
+    text: 'Sleep can get lighter or more restless in the days leading up to a period.',
+    isHeadlineEligible: true,
+  },
+  {
+    id: 'luteal-sleep-02',
+    phase: 'luteal',
+    category: 'sleep',
+    text: 'Cutting caffeine earlier in the day can help if evenings feel more wired than usual.',
+    isHeadlineEligible: true,
+  },
+];
