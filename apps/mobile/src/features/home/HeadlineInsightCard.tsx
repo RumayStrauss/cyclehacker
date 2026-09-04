@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 interface HeadlineInsightCardProps {
   text: string;
@@ -16,16 +16,19 @@ export function HeadlineInsightCard({ text }: HeadlineInsightCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colors.primaryMuted,
-    borderRadius: radii.lg,
+    backgroundColor: colors.surface,
+    borderRadius: radii.xl,
+    borderWidth: 1,
+    borderColor: colors.primary,
     padding: spacing.lg,
   },
   eyebrow: {
+    fontFamily: fonts.bold,
     fontSize: 12,
-    fontWeight: '700',
     color: colors.primary,
     textTransform: 'uppercase',
+    letterSpacing: 1,
     marginBottom: spacing.xs,
   },
-  text: { fontSize: 16, color: colors.text, lineHeight: 22 },
+  text: { fontFamily: fonts.regular, fontSize: 16, color: colors.text, lineHeight: 22 },
 });

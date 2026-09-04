@@ -9,17 +9,29 @@ export type FlowLevel = 'none' | 'spotting' | 'light' | 'medium' | 'heavy';
 export type EntrySource = 'self' | 'partner';
 export type ProfileStatus = 'active' | 'archived';
 export type SymptomType =
+  | 'clots'
   | 'cramps'
   | 'headache'
-  | 'bloating'
-  | 'fatigue'
-  | 'acne'
-  | 'tender_breasts'
   | 'backache'
   | 'nausea'
+  | 'bloating'
+  | 'tender_breasts'
+  | 'energy'
+  | 'low_energy'
+  | 'fatigue'
+  | 'wired'
+  | 'restless'
   | 'cravings'
-  | 'insomnia'
-  | 'other';
+  | 'cravings_sweet'
+  | 'cravings_salty'
+  | 'cravings_chocolate'
+  | 'cravings_carbs'
+  | 'libido'
+  | 'libido_low'
+  | 'libido_neutral'
+  | 'libido_high';
+/** 1=Low, 2=Meh, 3=Fine, 4=High, 5=Super high. */
+export type SymptomIntensity = 1 | 2 | 3 | 4 | 5;
 export type PartnerLinkStatus = 'pending' | 'active' | 'revoked';
 export type InviteDirection = 'owner_invites_partner' | 'partner_invites_owner';
 export type InviteStatus = 'pending' | 'accepted' | 'expired' | 'revoked';
@@ -99,7 +111,7 @@ export interface Database {
           profile_id: string;
           date: string;
           symptom_type: SymptomType;
-          value: boolean;
+          intensity: SymptomIntensity;
           source: EntrySource;
           created_at: string;
         };
@@ -108,7 +120,7 @@ export interface Database {
           profile_id: string;
           date: string;
           symptom_type: SymptomType;
-          value?: boolean;
+          intensity?: SymptomIntensity;
           source?: EntrySource;
         };
         Update: Partial<Database['public']['Tables']['symptom_logs']['Insert']>;

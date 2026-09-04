@@ -23,9 +23,9 @@ export async function listPeriodEntries(
 export async function listSymptomsForDate(client: CycleHackerClient, profileId: string, date: string) {
   const { data, error } = await client
     .from('symptom_logs')
-    .select('symptom_type')
+    .select('symptom_type, intensity')
     .eq('profile_id', profileId)
     .eq('date', date);
   if (error) throw error;
-  return (data ?? []).map((row) => row.symptom_type);
+  return (data ?? []).map((row) => ({ type: row.symptom_type, intensity: row.intensity }));
 }

@@ -1,13 +1,14 @@
-import type { FlowLevel, SymptomType } from '@cyclehacker/supabase-client';
+import type { FlowLevel, SymptomIntensity, SymptomType } from '@cyclehacker/supabase-client';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text } from 'react-native';
-import { FlowSelector } from '@/features/check-in/FlowSelector';
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { AllSymptomsList } from '@/features/check-in/AllSymptomsList';
 import { MoodTapRow } from '@/features/check-in/MoodTapRow';
-import { SymptomChipGrid } from '@/features/check-in/SymptomChipGrid';
+import { QuickAccessGrid } from '@/features/check-in/QuickAccessGrid';
 import { useSaveCheckIn } from '@/features/check-in/useSaveCheckIn';
 import { useOwnProfile } from '@/lib/use-own-profile';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 function today(): string {
   return new Date().toISOString().slice(0, 10);
@@ -19,44 +20,87 @@ export default function CheckIn() {
 
   const [flowLevel, setFlowLevel] = useState<FlowLevel | undefined>(undefined);
   const [mood, setMood] = useState<number | undefined>(undefined);
-  const [symptoms, setSymptoms] = useState<SymptomType[]>([]);
+  const [intensities, setIntensities] = useState<Partial<Record<SymptomType, SymptomIntensity>>>({});
+
+  function setIntensity(type: SymptomType, intensity: SymptomIntensity | undefined) {
+    setIntensities((prev) => {
+      const next = { ...prev };
+      if (intensity === undefined) delete next[type];
+      else next[type] = intensity;
+      return next;
+    });
+  }
 
   async function handleDone() {
+    const symptoms = Object.entries(intensities).map(([type, intensity]) => ({
+      type: type as SymptomType,
+      intensity: intensity as SymptomIntensity,
+    }));
     await saveCheckIn.mutateAsync({ date: today(), flowLevel, mood, symptoms });
     router.back();
   }
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.subtitle}>Everything here is optional. Log what feels relevant today.</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.dragHandle} />
+        <Text style={styles.headerTitle}>Daily check-in</Text>
+      </View>
 
-      <FlowSelector value={flowLevel} onChange={setFlowLevel} />
-      <MoodTapRow value={mood} onChange={setMood} />
-      <SymptomChipGrid value={symptoms} onChange={setSymptoms} />
+      <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
+        <QuickAccessGrid
+          flowLevel={flowLevel}
+          onFlowLevelChange={setFlowLevel}
+          intensities={intensities}
+          onSetIntensity={setIntensity}
+        />
+        <AllSymptomsList intensities={intensities} onSetIntensity={setIntensity} />
+        <MoodTapRow value={mood} onChange={setMood} />
+      </ScrollView>
 
-      {saveCheckIn.isError ? <Text style={styles.error}>Something went wrong. Try again.</Text> : null}
-
-      <Pressable style={styles.button} onPress={handleDone} disabled={saveCheckIn.isPending}>
-        {saveCheckIn.isPending ? (
-          <ActivityIndicator color={colors.surface} />
-        ) : (
-          <Text style={styles.buttonText}>Done</Text>
-        )}
-      </Pressable>
-    </ScrollView>
+      <LinearGradient colors={['rgba(22,17,29,0)', 'rgba(22,17,29,0.95)']} style={styles.footerFade} pointerEvents="none" />
+      <View style={styles.footer}>
+        {saveCheckIn.isError ? <Text style={styles.error}>Something went wrong. Try again.</Text> : null}
+        <Pressable style={styles.button} onPress={handleDone} disabled={saveCheckIn.isPending}>
+          {saveCheckIn.isPending ? (
+            <ActivityIndicator color={colors.onPrimary} />
+          ) : (
+            <Text style={styles.buttonText}>Done</Text>
+          )}
+        </Pressable>
+        <View style={styles.homeIndicator} />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.lg, gap: spacing.lg },
-  subtitle: { fontSize: 14, color: colors.textMuted, marginBottom: spacing.sm },
-  error: { color: colors.danger },
-  button: {
-    backgroundColor: colors.primary,
-    borderRadius: radii.md,
-    paddingVertical: spacing.md,
-    alignItems: 'center',
+  header: { alignItems: 'center', paddingTop: 10 },
+  dragHandle: { width: 36, height: 4, borderRadius: 2, backgroundColor: colors.borderStrong, marginBottom: 14 },
+  headerTitle: {
+    fontFamily: fonts.bold,
+    fontSize: 17,
+    color: colors.text,
+    paddingBottom: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+    width: '100%',
+    textAlign: 'center',
   },
-  buttonText: { color: colors.surface, fontSize: 16, fontWeight: '600' },
+  scroll: { flex: 1 },
+  content: { paddingHorizontal: spacing.md, paddingTop: spacing.lg, gap: spacing.xl, paddingBottom: 120 },
+  footerFade: { position: 'absolute', left: 0, right: 0, bottom: 88, height: 40 },
+  footer: { paddingHorizontal: spacing.md, alignItems: 'center', gap: spacing.sm, backgroundColor: colors.background },
+  error: { color: colors.danger, fontFamily: fonts.regular, fontSize: 13 },
+  button: {
+    width: '100%',
+    backgroundColor: colors.primary,
+    borderRadius: radii.pill,
+    height: 48,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: { color: colors.onPrimary, fontSize: 16, fontFamily: fonts.regular },
+  homeIndicator: { width: 120, height: 5, borderRadius: 100, backgroundColor: colors.text, marginTop: 8, marginBottom: 8 },
 });

@@ -9,10 +9,11 @@ export type {
   PartnerLinkStatus,
   ProfileStatus,
   SharingCategory,
+  SymptomIntensity,
   SymptomType,
 } from './types.gen';
 export { deleteOwnAccount } from './queries/account';
 export { saveDailyCheckIn } from './queries/check-in';
-export type { DailyCheckInInput } from './queries/check-in';
+export type { DailyCheckInInput, SymptomLogInput } from './queries/check-in';
 export { listPeriodEntries, listSymptomsForDate } from './queries/cycle-history';
 export { createOwnCycleProfile, getOwnCycleProfile } from './queries/profiles';

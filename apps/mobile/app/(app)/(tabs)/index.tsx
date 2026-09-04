@@ -5,7 +5,7 @@ import { CycleDaySummary } from '@/features/home/CycleDaySummary';
 import { HeadlineInsightCard } from '@/features/home/HeadlineInsightCard';
 import { useCycleDayInfo } from '@/features/home/useCycleDayInfo';
 import { useOwnProfile } from '@/lib/use-own-profile';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 function today(): string {
   return new Date().toISOString().slice(0, 10);
@@ -60,26 +60,26 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: spacing.lg, backgroundColor: colors.background, gap: spacing.lg },
   emptyCard: {
     backgroundColor: colors.surface,
-    borderRadius: radii.lg,
+    borderRadius: radii.xl,
     borderWidth: 1,
     borderColor: colors.border,
     padding: spacing.lg,
   },
-  emptyTitle: { fontSize: 20, fontWeight: '700', color: colors.text, marginBottom: spacing.sm },
-  emptyBody: { fontSize: 14, color: colors.textMuted, marginBottom: spacing.lg },
+  emptyTitle: { fontFamily: fonts.bold, fontSize: 20, color: colors.text, marginBottom: spacing.sm },
+  emptyBody: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, marginBottom: spacing.lg },
   button: {
     backgroundColor: colors.primary,
-    borderRadius: radii.md,
+    borderRadius: radii.pill,
     paddingVertical: spacing.md,
     alignItems: 'center',
   },
-  buttonText: { color: colors.surface, fontSize: 16, fontWeight: '600' },
+  buttonText: { color: colors.onPrimary, fontSize: 16, fontFamily: fonts.bold },
   checkInButton: {
     marginTop: 'auto',
     backgroundColor: colors.primary,
-    borderRadius: radii.md,
+    borderRadius: radii.pill,
     paddingVertical: spacing.md,
     alignItems: 'center',
   },
-  checkInButtonText: { color: colors.surface, fontSize: 16, fontWeight: '600' },
+  checkInButtonText: { color: colors.onPrimary, fontSize: 16, fontFamily: fonts.bold },
 });

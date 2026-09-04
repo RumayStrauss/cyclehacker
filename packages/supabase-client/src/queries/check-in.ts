@@ -1,5 +1,11 @@
 import type { CycleHackerClient } from '../client';
-import type { FlowLevel, SymptomType } from '../types.gen';
+import type { FlowLevel, SymptomIntensity, SymptomType } from '../types.gen';
+
+export interface SymptomLogInput {
+  type: SymptomType;
+  /** 1=Low, 2=Meh, 3=Fine, 4=High, 5=Super high. */
+  intensity: SymptomIntensity;
+}
 
 export interface DailyCheckInInput {
   profileId: string;
@@ -7,7 +13,7 @@ export interface DailyCheckInInput {
   date: string;
   flowLevel?: FlowLevel;
   mood?: number;
-  symptoms?: SymptomType[];
+  symptoms?: SymptomLogInput[];
 }
 
 /**
@@ -46,7 +52,7 @@ export async function saveDailyCheckIn(
     );
   }
 
-  for (const symptomType of input.symptoms ?? []) {
+  for (const symptom of input.symptoms ?? []) {
     tasks.push(
       client
         .from('symptom_logs')
@@ -54,8 +60,8 @@ export async function saveDailyCheckIn(
           {
             profile_id: input.profileId,
             date: input.date,
-            symptom_type: symptomType,
-            value: true,
+            symptom_type: symptom.type,
+            intensity: symptom.intensity,
             source: 'self',
           },
           { onConflict: 'profile_id,date,symptom_type' },

@@ -87,15 +87,24 @@ create policy "cycle_entries_all_controller" on public.cycle_entries
   );
 
 -- ---------- symptom_logs ----------
+-- symptom_type is grouped into five UI categories (flow, bodily, energy,
+-- cravings, libido); 'energy'/'cravings'/'libido' are each also a
+-- general/quick-access entry alongside their own granular symptoms, matching
+-- the check-in screen's "frequently used" tiles vs. "all symptoms" chips.
 create table public.symptom_logs (
   id uuid primary key default gen_random_uuid(),
   profile_id uuid not null references public.cycle_profiles (id) on delete cascade,
   date date not null,
   symptom_type text not null check (symptom_type in (
-    'cramps', 'headache', 'bloating', 'fatigue', 'acne',
-    'tender_breasts', 'backache', 'nausea', 'cravings', 'insomnia', 'other'
+    'clots',
+    'cramps', 'headache', 'backache', 'nausea', 'bloating', 'tender_breasts',
+    'energy', 'low_energy', 'fatigue', 'wired', 'restless',
+    'cravings', 'cravings_sweet', 'cravings_salty', 'cravings_chocolate', 'cravings_carbs',
+    'libido', 'libido_low', 'libido_neutral', 'libido_high'
   )),
-  value boolean not null default true,
+  -- 1=Low, 2=Meh, 3=Fine, 4=High, 5=Super high. A plain chip tap (no hold-drag
+  -- dial) logs 3 (Fine) as a neutral default.
+  intensity smallint not null default 3 check (intensity between 1 and 5),
   source text not null default 'self' check (source in ('self', 'partner')),
   created_at timestamptz not null default now(),
   unique (profile_id, date, symptom_type)

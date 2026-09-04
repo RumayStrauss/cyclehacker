@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 export default function OnboardingPartnerStub() {
   return (
@@ -19,13 +19,13 @@ export default function OnboardingPartnerStub() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', padding: spacing.lg, backgroundColor: colors.background },
-  title: { fontSize: 22, fontWeight: '700', color: colors.text, marginBottom: spacing.md },
-  body: { fontSize: 15, color: colors.textMuted, lineHeight: 22, marginBottom: spacing.lg },
+  title: { fontFamily: fonts.display, fontSize: 22, color: colors.text, marginBottom: spacing.md },
+  body: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary, lineHeight: 22, marginBottom: spacing.lg },
   button: {
     backgroundColor: colors.primary,
-    borderRadius: radii.md,
+    borderRadius: radii.pill,
     paddingVertical: spacing.md,
     alignItems: 'center',
   },
-  buttonText: { color: colors.surface, fontSize: 16, fontWeight: '600' },
+  buttonText: { color: colors.onPrimary, fontSize: 16, fontFamily: fonts.bold },
 });

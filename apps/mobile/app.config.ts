@@ -18,6 +18,7 @@ const config: ExpoConfig = {
   experiments: {
     typedRoutes: true,
   },
+  assetBundlePatterns: ['assets/fonts/*'],
 };
 
 export default config;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useAuth } from '@/lib/auth-context';
 import { supabase } from '@/lib/supabase';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 export default function Settings() {
   const { session } = useAuth();
@@ -60,7 +60,7 @@ export default function Settings() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: spacing.lg, backgroundColor: colors.background },
-  email: { fontSize: 16, color: colors.textMuted, marginBottom: spacing.lg },
+  email: { fontFamily: fonts.regular, fontSize: 16, color: colors.textSecondary, marginBottom: spacing.lg },
   row: {
     backgroundColor: colors.surface,
     borderRadius: radii.md,
@@ -69,11 +69,11 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     marginBottom: spacing.sm,
   },
-  rowText: { fontSize: 16, color: colors.text },
+  rowText: { fontFamily: fonts.regular, fontSize: 16, color: colors.text },
   dangerRow: {
     marginTop: spacing.lg,
     padding: spacing.md,
     alignItems: 'center',
   },
-  dangerText: { fontSize: 15, color: colors.danger, fontWeight: '600' },
+  dangerText: { fontFamily: fonts.bold, fontSize: 15, color: colors.danger },
 });

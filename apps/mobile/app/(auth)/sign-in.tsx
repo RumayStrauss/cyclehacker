@@ -2,7 +2,7 @@ import { Link } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { supabase } from '@/lib/supabase';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -24,6 +24,7 @@ export default function SignIn() {
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor={colors.textMuted}
         autoCapitalize="none"
         keyboardType="email-address"
         value={email}
@@ -32,6 +33,7 @@ export default function SignIn() {
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor={colors.textMuted}
         secureTextEntry
         value={password}
         onChangeText={setPassword}
@@ -39,7 +41,7 @@ export default function SignIn() {
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Pressable style={styles.button} onPress={handleSignIn} disabled={isSubmitting}>
         {isSubmitting ? (
-          <ActivityIndicator color={colors.surface} />
+          <ActivityIndicator color={colors.onPrimary} />
         ) : (
           <Text style={styles.buttonText}>Sign in</Text>
         )}
@@ -53,7 +55,7 @@ export default function SignIn() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', padding: spacing.lg, backgroundColor: colors.background },
-  title: { fontSize: 28, fontWeight: '700', color: colors.text, marginBottom: spacing.lg },
+  title: { fontFamily: fonts.display, fontSize: 28, color: colors.text, marginBottom: spacing.lg },
   input: {
     borderWidth: 1,
     borderColor: colors.border,
@@ -61,17 +63,19 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     marginBottom: spacing.md,
     backgroundColor: colors.surface,
+    color: colors.text,
+    fontFamily: fonts.regular,
     fontSize: 16,
   },
-  error: { color: colors.danger, marginBottom: spacing.md },
+  error: { color: colors.danger, fontFamily: fonts.regular, marginBottom: spacing.md },
   button: {
     backgroundColor: colors.primary,
-    borderRadius: radii.md,
+    borderRadius: radii.pill,
     paddingVertical: spacing.md,
     alignItems: 'center',
     marginBottom: spacing.md,
   },
-  buttonText: { color: colors.surface, fontSize: 16, fontWeight: '600' },
+  buttonText: { color: colors.onPrimary, fontSize: 16, fontFamily: fonts.bold },
   link: { alignItems: 'center' },
-  linkText: { color: colors.primary, fontSize: 14 },
+  linkText: { color: colors.primary, fontFamily: fonts.regular, fontSize: 14 },
 });

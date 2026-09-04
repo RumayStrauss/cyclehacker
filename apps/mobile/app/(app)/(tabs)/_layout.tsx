@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { colors } from '@/theme';
+import { colors, fonts } from '@/theme';
 
 export default function TabsLayout() {
   return (
@@ -7,10 +7,12 @@ export default function TabsLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarInactiveTintColor: colors.textSecondary,
+        tabBarStyle: { backgroundColor: colors.navBackground, borderTopColor: colors.border },
+        tabBarLabelStyle: { fontFamily: fonts.regular, fontSize: 10 },
       }}
     >
-      <Tabs.Screen name="index" options={{ title: 'Home' }} />
+      <Tabs.Screen name="index" options={{ title: 'Cycle' }} />
       <Tabs.Screen name="calendar" options={{ title: 'Calendar' }} />
       <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
     </Tabs>

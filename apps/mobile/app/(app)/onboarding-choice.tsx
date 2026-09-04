@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useAuth } from '@/lib/auth-context';
 import { supabase } from '@/lib/supabase';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 export default function OnboardingChoice() {
   const { session } = useAuth();
@@ -53,10 +53,10 @@ export default function OnboardingChoice() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', padding: spacing.lg, backgroundColor: colors.background },
-  title: { fontSize: 24, fontWeight: '700', color: colors.text, marginBottom: spacing.lg },
+  title: { fontFamily: fonts.display, fontSize: 24, color: colors.text, marginBottom: spacing.lg },
   card: {
     backgroundColor: colors.surface,
-    borderRadius: radii.lg,
+    borderRadius: radii.xl,
     borderWidth: 1,
     borderColor: colors.border,
     padding: spacing.lg,
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     minHeight: 88,
     justifyContent: 'center',
   },
-  cardTitle: { fontSize: 17, fontWeight: '600', color: colors.text, marginBottom: spacing.xs },
-  cardBody: { fontSize: 14, color: colors.textMuted },
+  cardTitle: { fontFamily: fonts.bold, fontSize: 17, color: colors.text, marginBottom: spacing.xs },
+  cardBody: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary },
 });

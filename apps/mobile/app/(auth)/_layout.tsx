@@ -1,5 +1,6 @@
 import { Redirect, Stack } from 'expo-router';
 import { useAuth } from '@/lib/auth-context';
+import { colors } from '@/theme';
 
 export default function AuthLayout() {
   const { session } = useAuth();
@@ -8,5 +9,5 @@ export default function AuthLayout() {
     return <Redirect href="/(app)" />;
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }} />;
 }

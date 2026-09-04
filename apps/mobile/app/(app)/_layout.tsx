@@ -1,5 +1,6 @@
 import { Redirect, Stack } from 'expo-router';
 import { useAuth } from '@/lib/auth-context';
+import { colors } from '@/theme';
 
 export default function AppLayout() {
   const { session } = useAuth();
@@ -9,14 +10,11 @@ export default function AppLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="onboarding-choice" />
       <Stack.Screen name="onboarding-partner-stub" />
-      <Stack.Screen
-        name="check-in"
-        options={{ presentation: 'modal', headerShown: true, title: 'Daily check-in' }}
-      />
+      <Stack.Screen name="check-in" options={{ presentation: 'modal', headerShown: false }} />
     </Stack>
   );
 }

@@ -1,6 +1,6 @@
 import type { Confidence, CyclePhase } from '@cyclehacker/prediction-engine';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, spacing } from '@/theme';
+import { colors, fonts, spacing } from '@/theme';
 
 const PHASE_LABELS: Record<CyclePhase, string> = {
   menstrual: 'Period',
@@ -33,7 +33,7 @@ export function CycleDaySummary({ cycleDay, phase, confidence }: CycleDaySummary
 
 const styles = StyleSheet.create({
   container: { marginBottom: spacing.lg },
-  day: { fontSize: 34, fontWeight: '700', color: colors.text },
-  phase: { fontSize: 17, color: colors.textMuted, marginTop: spacing.xs },
-  note: { fontSize: 13, color: colors.textMuted, marginTop: spacing.sm },
+  day: { fontFamily: fonts.display, fontSize: 34, color: colors.text },
+  phase: { fontFamily: fonts.regular, fontSize: 17, color: colors.textSecondary, marginTop: spacing.xs },
+  note: { fontFamily: fonts.regular, fontSize: 13, color: colors.textMuted, marginTop: spacing.sm },
 });

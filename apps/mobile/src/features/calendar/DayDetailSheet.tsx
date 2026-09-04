@@ -2,8 +2,9 @@ import { listSymptomsForDate } from '@cyclehacker/supabase-client';
 import { useQuery } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import { Modal, Pressable, StyleSheet, Text } from 'react-native';
+import { SYMPTOM_LABELS } from '@/features/check-in/symptom-taxonomy';
 import { supabase } from '@/lib/supabase';
-import { colors, radii, spacing } from '@/theme';
+import { colors, fonts, radii, spacing } from '@/theme';
 
 interface DayDetailSheetProps {
   profileId: string | undefined;
@@ -22,13 +23,15 @@ export function DayDetailSheet({ profileId, date, onClose }: DayDetailSheetProps
     enabled: Boolean(profileId && date),
   });
 
+  const labels = (symptomsQuery.data ?? []).map((row) => SYMPTOM_LABELS[row.type]);
+
   return (
     <Modal visible={Boolean(date)} transparent animationType="slide" onRequestClose={onClose}>
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={(event) => event.stopPropagation()}>
           <Text style={styles.title}>{date}</Text>
-          {symptomsQuery.data && symptomsQuery.data.length > 0 ? (
-            <Text style={styles.body}>Symptoms logged: {symptomsQuery.data.join(', ')}</Text>
+          {labels.length > 0 ? (
+            <Text style={styles.body}>Symptoms logged: {labels.join(', ')}</Text>
           ) : (
             <Text style={styles.body}>Nothing logged for this day.</Text>
           )}
@@ -50,20 +53,20 @@ export function DayDetailSheet({ profileId, date, onClose }: DayDetailSheetProps
 }
 
 const styles = StyleSheet.create({
-  backdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.3)', justifyContent: 'flex-end' },
+  backdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' },
   sheet: {
     backgroundColor: colors.surface,
-    borderTopLeftRadius: radii.lg,
-    borderTopRightRadius: radii.lg,
+    borderTopLeftRadius: radii.xl,
+    borderTopRightRadius: radii.xl,
     padding: spacing.lg,
   },
-  title: { fontSize: 18, fontWeight: '700', color: colors.text, marginBottom: spacing.sm },
-  body: { fontSize: 15, color: colors.textMuted, marginBottom: spacing.md },
+  title: { fontFamily: fonts.bold, fontSize: 18, color: colors.text, marginBottom: spacing.sm },
+  body: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary, marginBottom: spacing.md },
   button: {
     backgroundColor: colors.primary,
-    borderRadius: radii.md,
+    borderRadius: radii.pill,
     paddingVertical: spacing.sm,
     alignItems: 'center',
   },
-  buttonText: { color: colors.surface, fontWeight: '600' },
+  buttonText: { color: colors.onPrimary, fontFamily: fonts.bold, fontSize: 15 },
 });

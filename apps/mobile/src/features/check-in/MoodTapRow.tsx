@@ -1,5 +1,7 @@
+import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { colors, radii, spacing } from '@/theme';
+import { fonts, spacing } from '@/theme';
+import { SectionLabel } from './SectionLabel';
 
 const MOODS = [
   { value: 1, emoji: '😞', label: 'Low' },
@@ -16,15 +18,18 @@ interface MoodTapRowProps {
 
 export function MoodTapRow({ value, onChange }: MoodTapRowProps) {
   return (
-    <View>
-      <Text style={styles.label}>Mood</Text>
+    <View style={styles.section}>
+      <SectionLabel>Mood</SectionLabel>
       <View style={styles.row}>
         {MOODS.map((mood) => {
           const selected = value === mood.value;
           return (
             <Pressable
               key={mood.value}
-              onPress={() => onChange(selected ? undefined : mood.value)}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                onChange(selected ? undefined : mood.value);
+              }}
               style={[styles.tap, selected && styles.tapSelected]}
               accessibilityRole="button"
               accessibilityLabel={mood.label}
@@ -40,18 +45,18 @@ export function MoodTapRow({ value, onChange }: MoodTapRowProps) {
 }
 
 const styles = StyleSheet.create({
-  label: { fontSize: 15, fontWeight: '600', color: colors.text, marginBottom: spacing.sm },
+  section: { gap: spacing.md },
   row: { flexDirection: 'row', justifyContent: 'space-between' },
   tap: {
     width: 52,
     height: 52,
-    borderRadius: radii.lg,
+    borderRadius: 26,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
+    borderWidth: 1.5,
+    borderColor: '#22192e',
+    backgroundColor: '#22192e',
   },
-  tapSelected: { backgroundColor: colors.primaryMuted, borderColor: colors.primary },
-  emoji: { fontSize: 24 },
+  tapSelected: { borderColor: '#3be46e', backgroundColor: '#3be46e26' },
+  emoji: { fontSize: 24, fontFamily: fonts.regular },
 });
