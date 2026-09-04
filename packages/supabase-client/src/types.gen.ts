@@ -72,6 +72,10 @@ export interface Database {
           created_by_user_id: string;
           is_proxy: boolean;
           status: ProfileStatus;
+          initial_cycle_length_estimate: number | null;
+          initial_period_length_estimate: number | null;
+          typical_symptoms: string[] | null;
+          goals: string[] | null;
           created_at: string;
           updated_at: string;
         };
@@ -82,6 +86,10 @@ export interface Database {
           created_by_user_id: string;
           is_proxy?: boolean;
           status?: ProfileStatus;
+          initial_cycle_length_estimate?: number | null;
+          initial_period_length_estimate?: number | null;
+          typical_symptoms?: string[] | null;
+          goals?: string[] | null;
         };
         Update: Partial<Database['public']['Tables']['cycle_profiles']['Insert']>;
         Relationships: [];

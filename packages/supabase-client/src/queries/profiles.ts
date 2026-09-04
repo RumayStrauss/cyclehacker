@@ -1,9 +1,15 @@
 import type { CycleHackerClient } from '../client';
 
-export async function createOwnCycleProfile(
-  client: CycleHackerClient,
-  params: { userId: string; name: string },
-) {
+export interface CreateOwnCycleProfileParams {
+  userId: string;
+  name: string;
+  initialCycleLengthEstimate?: number;
+  initialPeriodLengthEstimate?: number;
+  typicalSymptoms?: string[];
+  goals?: string[];
+}
+
+export async function createOwnCycleProfile(client: CycleHackerClient, params: CreateOwnCycleProfileParams) {
   const { data, error } = await client
     .from('cycle_profiles')
     .insert({
@@ -11,6 +17,10 @@ export async function createOwnCycleProfile(
       owner_user_id: params.userId,
       created_by_user_id: params.userId,
       is_proxy: false,
+      initial_cycle_length_estimate: params.initialCycleLengthEstimate,
+      initial_period_length_estimate: params.initialPeriodLengthEstimate,
+      typical_symptoms: params.typicalSymptoms,
+      goals: params.goals,
     })
     .select()
     .single();

@@ -2,6 +2,7 @@ import { deleteOwnAccount } from '@cyclehacker/supabase-client';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 import { useAuth } from '@/lib/auth-context';
 import { supabase } from '@/lib/supabase';
 import { colors, fonts, radii, spacing } from '@/theme';
@@ -37,6 +38,12 @@ export default function Settings() {
 
   return (
     <View style={styles.container}>
+      <Pressable style={styles.backButton} onPress={() => router.back()} hitSlop={8}>
+        <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
+          <Path d="M15 18l-6-6 6-6" stroke={colors.text} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+      </Pressable>
+
       <Text style={styles.email}>{session?.user.email ?? session?.user.phone}</Text>
 
       <Pressable style={styles.row} onPress={() => router.push('/(app)/onboarding-partner-stub')}>
@@ -60,6 +67,7 @@ export default function Settings() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: spacing.lg, backgroundColor: colors.background },
+  backButton: { marginBottom: spacing.lg },
   email: { fontFamily: fonts.regular, fontSize: 16, color: colors.textSecondary, marginBottom: spacing.lg },
   row: {
     backgroundColor: colors.surface,

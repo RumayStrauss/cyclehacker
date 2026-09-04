@@ -41,6 +41,13 @@ create table public.cycle_profiles (
   created_by_user_id uuid not null references public.users (id) on delete cascade,
   is_proxy boolean not null default false,
   status text not null default 'active' check (status in ('active', 'archived')),
+  -- Onboarding survey answers. Seed guesses for the prediction engine's
+  -- rolling average before any real cycle_entries exist; typical_symptoms
+  -- and goals are not read by any other feature yet, just captured for later.
+  initial_cycle_length_estimate smallint check (initial_cycle_length_estimate between 10 and 60),
+  initial_period_length_estimate smallint check (initial_period_length_estimate between 1 and 14),
+  typical_symptoms text[],
+  goals text[],
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );

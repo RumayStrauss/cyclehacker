@@ -11,6 +11,15 @@ export const colors = {
   primary: '#3be46e',
   onPrimary: '#000000',
   danger: '#ff5c72',
+  /** Form-field tokens, straight from the Figma component set. */
+  inputFill: '#0a070d',
+  inputActiveFill: '#22192e',
+  inputActiveBorder: '#1b5f5e',
+  inputPlaceholder: 'rgba(255,255,255,0.5)',
+  /** Selection accent used by checkbox/chip "selected" states (distinct from the primary CTA green). */
+  selected: '#22a09e',
+  selectedTint: 'rgba(34,160,158,0.15)',
+  checkboxDefault: '#4b3767',
 };
 
 /** Cycle-phase tint colors, shared by the calendar and any phase-aware UI. */

@@ -12,7 +12,7 @@ export default function AppLayout() {
   return (
     <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>
       <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="onboarding-choice" />
+      <Stack.Screen name="onboarding" />
       <Stack.Screen name="onboarding-partner-stub" />
       <Stack.Screen name="check-in" options={{ presentation: 'modal', headerShown: false }} />
     </Stack>
