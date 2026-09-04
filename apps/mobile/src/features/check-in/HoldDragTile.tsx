@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   wrapper: { position: 'relative' },
   tile: {
     backgroundColor: '#22192e',
-    borderRadius: radii.xl,
+    borderRadius: radii.md,
     borderWidth: 1.5,
     borderColor: 'transparent',
     paddingVertical: 22,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
     width: 132,
     backgroundColor: '#0a070d',
-    borderRadius: radii.lg,
+    borderRadius: radii.md,
     padding: 6,
     gap: 3,
     zIndex: 5,

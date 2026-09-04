@@ -40,7 +40,8 @@ export const spacing = {
 
 export const radii = {
   sm: 8,
-  md: 14,
+  /** Matches Figma's form-fields/container corner-radius token exactly. */
+  md: 16,
   lg: 22,
   xl: 24,
   pill: 999,
